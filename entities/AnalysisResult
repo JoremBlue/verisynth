@@ -1,0 +1,64 @@
+{
+  "name": "AnalysisResult",
+  "type": "object",
+  "properties": {
+    "file_name": {
+      "type": "string",
+      "description": "Original filename of the uploaded video"
+    },
+    "file_path": {
+      "type": "string",
+      "description": "URL or server path to the uploaded file"
+    },
+    "processing_status": {
+      "type": "string",
+      "enum": [
+        "pending",
+        "processing",
+        "done",
+        "failed"
+      ],
+      "default": "pending",
+      "description": "Current processing state"
+    },
+    "label": {
+      "type": "string",
+      "enum": [
+        "FAKE",
+        "REAL"
+      ],
+      "description": "Final classification result"
+    },
+    "confidence_score": {
+      "type": "number",
+      "description": "Fused confidence score between 0 and 1"
+    },
+    "video_score": {
+      "type": "number",
+      "description": "ViT video modality score (0-1)"
+    },
+    "audio_score": {
+      "type": "number",
+      "description": "Wav2Vec2 audio modality score (0-1)"
+    },
+    "scene_score": {
+      "type": "number",
+      "description": "Optical flow scene physics score (0-1)"
+    },
+    "gradcam_image_url": {
+      "type": "string",
+      "description": "URL to Grad-CAM heatmap overlay image"
+    },
+    "spectrogram_image_url": {
+      "type": "string",
+      "description": "URL to Mel spectrogram image"
+    },
+    "error_message": {
+      "type": "string",
+      "description": "Error details if processing failed"
+    }
+  },
+  "required": [
+    "file_name"
+  ]
+}
